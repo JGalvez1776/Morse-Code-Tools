@@ -1,0 +1,27 @@
+Simple Guide to Using Morse Code
+
+Notes for converting morse code to flashing lights or sound:
+    A dot is one unit and a dash is three units
+    The space between parts of the same letter is one unit
+    The space between letters is three units
+    The space between words is seven units
+
+
+Example input:
+    "MORSE CODE":
+        String: 
+            −− −−− ·−· ··· ·       −·−· −−− −·· ·
+
+        Sound/light ('=' means signal on & '.' means signal off)
+            ===.===...===.===.===...=.===.=...=.=.=...=.......===.=.===.=...===.===.===...===.=.=...=
+
+            "."       =  Space between parts of a letter
+            "..."     =  Space between letters
+            "="       =  A dot (dit)
+            "==="     =  A line (dah)
+            "......." =  Space between words
+    
+    "AA" (Prosign for a new line):
+        String:
+            .-.-
+        
