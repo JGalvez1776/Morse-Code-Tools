@@ -1,3 +1,4 @@
+from utils import *
 
 LETTER_TO_ROMAN = {
                 'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..',
@@ -16,7 +17,6 @@ LETTER_TO_ROMAN = {
             }
 
 MORSE_TO_LETTER = {value: key for (key, value) in LETTER_TO_ROMAN.items()}
-
 
 def convert_to_morse(data):
     # Maybe find a way to make translation be a list converted to a string?
@@ -38,17 +38,15 @@ def convert_to_roman(data):
             translation += MORSE_TO_LETTER[character]
     return translation
 
-
 def main():
     # Main is to be used in testing. Remove once the program is finished.
-    phrase = 'This here is a test!'
+    phrase = 'SOS THIS MESSAGE HERE IS TO TEST THE AUDIO!'
     phrase2 = convert_to_morse(phrase)
-    phrase3 = convert_to_roman(phrase2)
+    print('Originals:')
     print(phrase)
     print(phrase2)
-    print(phrase3)
-
+    print('\nTranslations')
+    output_morse(phrase2, 250)
 
 if __name__ == '__main__':
     main()
-
