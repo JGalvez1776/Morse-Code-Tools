@@ -1,30 +1,23 @@
-import winsound
 import time
+try:
+    import winsound
+except ImportError:
+    print('At the moment the program only works on Windows :/')
 
 def output_morse(data, duration):
     for char in data:
         if char == '.':
-            short(1, duration)
+            short(duration)
         elif char == '-':
-            long(1, duration)
+            long(duration)
         elif char == ' ':
-            space(1, duration)
+            space(duration)
 
-# So far I am not utilizing the count parameter much. Maybe remove it doesn't get used by the end
-def short(count, duration):
-    if count == 0:
-        return
-    short(count - 1, duration)
+def short(duration):
     winsound.Beep(2500, duration)
 
-def long(count, duration):
-    if count == 0:
-        return
-    long(count - 1, duration)
+def long(duration):
     winsound.Beep(2500, duration * 3)
 
-def space(count, duration):
-    if count == 0:
-        return
-    space(count - 1, duration)
-    time.sleep(duration / 1000) # Sleep is in seconds duration is in miliseconds
+def space(duration):
+    time.sleep(duration / 1000) # sleep() uses seconds and duration is in milisecondss
