@@ -1,6 +1,6 @@
 from utils import *
 
-LETTER_TO_ROMAN = {
+LETTER_TO_MORSE = {
                 'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..',
                 'E': '.' , 'F': '..-.', 'G': '--.', 'H': '....',
                 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
@@ -16,15 +16,15 @@ LETTER_TO_ROMAN = {
                 '"': '.-..-.', '?': '..--..', '/': '-..-.', ' ': '     '
             }
 
-MORSE_TO_LETTER = {value: key for (key, value) in LETTER_TO_ROMAN.items()}
+MORSE_TO_LETTER = {value: key for (key, value) in LETTER_TO_MORSE.items()}
 
 def convert_to_morse(data):
     # Maybe find a way to make translation be a list converted to a string?
     translation = ''
     for character in data.upper():
-        if character not in LETTER_TO_ROMAN:
+        if character not in LETTER_TO_MORSE:
             assert False, f'ERROR: "{character}" is not translateable into morse code.'
-        translation += LETTER_TO_ROMAN[character] + ' '
+        translation += LETTER_TO_MORSE[character] + ' '
     return translation[:-1]
 
 def convert_to_roman(data):
@@ -41,15 +41,21 @@ def convert_to_roman(data):
     return translation
 
 def main():
-    # Main is to be used in testing. Remove once the program is finished.
-    phrase = input('Input text to be converted.\n').upper()
-    phrase2 = convert_to_morse(phrase)
-
-    print('Originals:')
-    print(phrase)
+    # NOTE: Implement spaces in the morse code translations
+    phrase = input('Orignal input:\n')
+    if phrase[0] in ['.', '-']:
+        phrase2 = convert_to_roman(phrase)
+        msg = 'Morse to Roman'
+    elif phrase[0] in LETTER_TO_MORSE:
+        # NOTE: Having a space then Morse code still ends up here!
+        phrase2 = convert_to_morse(phrase)
+        msg = 'Roman to Morse'
+    else:
+        assert False, 'Invalid Characters enterd'
+    print(f'\nTranslation')
     print(phrase2)
-    print('\nTranslations')
-    output_morse(phrase2, 250)
+    print(f'({msg})')
+
 
 if __name__ == '__main__':
     main()
